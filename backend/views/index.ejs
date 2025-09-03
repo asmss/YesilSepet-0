@@ -1,0 +1,79 @@
+<html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yeşil Sepet - Ürünler</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <h1>Yeşil Sepet</h1>
+    <div class="header-buton">
+      <button onclick="window.location.href='/sepet'" class="sepet-btn">Sepete Git</button>
+      <button onclick="window.location.href='/admin/products'" class="sepet-btn">admin</button>
+    <button onclick="window.location.href='/logout'" class="sepet-btn1">çıkış</button>  
+    </div>
+  
+  </header>
+
+  <section class="intro">
+    <h2>Doğal ve Organik Ürünler</h2>
+    <p>Bahçeden sofranıza, doğallığın gücüyle :)</p>
+  </section>
+
+  <h1 style="text-align: center;">Ürünler</h1>
+  <div class="urunler-container" id="urunler">
+    <% if (products && products.length > 0) { %>
+      <% products.forEach(product => { %>
+        <div class="urun-card">
+          <h3><%= product.name %></h3>
+          <p><%= product.description %></p>
+          <p>Fiyat: <%= product.price %> ₺</p>
+          <img src="<%= product.image %>" alt="<%= product.name %>" />
+          <p>Stok: <%= product.stock %></p>
+          <button class="ekle-btn" data-id="<%= product.id %>">Sepete Ekle</button>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>Henüz ürün bulunmamaktadır.</p>
+    <% } %>
+  </div>
+   
+  <footer>
+    <p>&copy; 2025 Yeşil Sepet. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".ekle-btn");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", function () {
+      const productId = this.getAttribute("data-id");
+
+      fetch("/cart/urun_ekle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          product_id: productId,   
+          quantity: 1              
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("Ürün sepete eklendi!");
+      })
+      .catch(error => {
+        console.error("Sepete eklerken hata:", error);
+      });
+    });
+  });
+});
+
+  </script>
+</body>
+</html>

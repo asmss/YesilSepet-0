@@ -1,0 +1,72 @@
+body, html {
+  height: 100%;
+  background: linear-gradient(135deg, #2f4f4f, #228b22);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #a8d5a8;
+}
+.form{
+    display: flex;
+  flex-direction: column;
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(34, 139, 34, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 55px;
+}
+
+.glass-card input {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: none;
+  margin-bottom: 18px;
+  color: #a8d5a8;
+  font-size: 1rem;
+}
+
+.glass-card input::placeholder {
+  color: #7bb47b;
+}
+
+.glass-card input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+  color: #264d26;
+}
+
+.glass-card button {
+  background: #2e7d32;
+  border-radius: 12px;
+  padding: 12px 20px;
+  border: none;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.glass-card button:hover {
+  background: #1b5e20;
+}
+a.register-link {
+  color: #a9a9a9; 
+  padding-top: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.3s ease;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+a.register-link:hover {
+  color: #000000; 
+  text-decoration: underline;
+  cursor: pointer;
+}

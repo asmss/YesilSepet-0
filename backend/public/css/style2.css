@@ -1,0 +1,218 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  color: #dcedc8;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #1b5e20;
+  color: #dcedc8;
+  padding: 25px 40px;
+  position: relative;
+  font-weight: 700;
+  font-size: 26px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.sepet-btn {
+  background-color: #388e3c;
+  color: #dcedc8;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.sepet-btn:hover {
+  background-color: #66bb6a;
+  color: #1b1b1b;
+}
+
+.urunler-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 30px auto 0;
+  max-width: 1200px;
+}
+
+.urun {
+  background-color: #1e1e1e;
+  border: 1px solid #4caf50;
+  border-radius: 20px;
+  padding: 20px;
+  width: 260px;
+  box-shadow: 0 6px 18px rgba(0, 128, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #c8e6c9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.urun:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(102, 187, 106, 0.3);
+}
+
+.urun h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #a5d6a7;
+}
+
+.urun p {
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #b0bdb1;
+}
+
+.urun strong {
+  font-weight: 700;
+  font-size: 18px;
+  color: #81c784;
+  margin-bottom: 15px;
+}
+
+.urun img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.adet-kontrol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.adet-kontrol button {
+  background-color: #388e3c;
+  color: #dcedc8;
+  border: none;
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.adet-kontrol button:hover {
+  background-color: #66bb6a;
+  color: #1b1b1b;
+}
+
+.adet-kontrol .adet {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #c8e6c9;
+}
+
+.sil-btn {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  font-weight: 700;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.sil-btn:hover {
+  background-color: #b71c1c;
+}
+
+#toplam-fiyat {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 15px 20px;
+  color: #81c784;
+  text-align: right;
+  border-top: 2px solid #388e3c;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    font-size: 20px;
+    padding: 8px 10px;       
+    flex-direction: column;  
+    align-items: center;     
+    justify-content: center; 
+    gap: 0;                  
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;           
+    line-height: 1.1;    
+  }
+
+  .sepet-btn {
+    margin: 4px 0 0 0;   
+    padding: 8px 14px;   
+    font-size: 15px;
+    width: auto;
+    align-self: center;  
+  }
+
+  .urunler-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .urun {
+    width: 90%;
+  }
+
+  #toplam-fiyat {
+    font-size: 18px;
+    text-align: center;
+    padding: 12px 10px;
+    margin: 0 auto;
+  }
+
+  .adet-kontrol button {
+    padding: 8px 14px;
+    font-size: 16px;
+  }
+
+  .adet-kontrol .adet {
+    font-size: 15px;
+  }
+
+  .sil-btn {
+    padding: 8px 0;
+    font-size: 14px;
+  }
+}
+

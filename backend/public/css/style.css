@@ -1,0 +1,160 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #121212;
+  color: #dcedc8;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #1b5e20;
+  color: #dcedc8;
+  padding: 20px 30px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.header-buton {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.sepet-btn,
+.sepet-btn1 {
+  padding: 10px 18px;
+  background: #388e3c;
+  color: #dcedc8;
+  border: none;
+  border-radius: 20px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sepet-btn:hover,
+.sepet-btn1:hover {
+  background: #66bb6a;
+}
+.intro {
+  background: #263238;
+  text-align: center;
+  padding: 30px;
+  color: #a5d6a7;
+}
+
+.urunler-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px;
+}
+
+.urun-card {
+  background: #1e1e1e;
+  color: #c8e6c9;
+  border: 1px solid #4caf50;
+  padding: 20px;
+  border-radius: 20px;
+  width: 250px;
+  box-shadow: 0 6px 18px rgba(0, 128, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.urun-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(102, 187, 106, 0.3);
+}
+
+.urun-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.urun-card p {
+  margin: 6px 0;
+}
+
+.urun-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.urun-card button {
+  background: #66bb6a;
+  color: #1b5e20;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.urun-card button:hover {
+  background: #81c784;
+}
+
+footer {
+  background: #1b5e20;
+  color: #dcedc8;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+.urun-card {
+  background: #1e1e1e;
+  color: #c8e6c9;
+  border: 1px solid #4caf50;
+  padding: 20px;
+  border-radius: 20px;
+  width: 250px;
+  box-shadow: 0 6px 18px rgba(0, 128, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.urun-card img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .header-buton {
+    position: static;
+    margin-top: 10px;
+    transform: none;
+    justify-content: center;
+  }
+
+  .sepet-btn,
+  .sepet-btn1 {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+}

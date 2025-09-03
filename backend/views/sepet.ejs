@@ -1,0 +1,125 @@
+<html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sepetim</title>
+  <link rel="stylesheet" href="/css/style2.css">
+  <style>
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sepetim</h1>
+    <button onclick="window.location.href='/anasayfa'" class="sepet-btn">Ürünlere Dön</button>
+  </header>
+
+  <div id="sepet" class="urunler-container">
+
+  </div>
+<h3 id="toplam-fiyat">Toplam: ₺0</h3>
+
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user_id = 1;
+    fetch(`/cart/listele/${user_id}`)
+      .then(res => res.json())
+      .then(response => {
+        const {data ,topfiyat} =response
+        const sepetDiv = document.getElementById("sepet");
+
+        if (data.length === 0) {
+          sepetDiv.innerHTML = "<p>Sepetiniz boş.</p>";
+          return;
+        }
+
+        data.forEach(item => {
+          const div = document.createElement("div");
+          div.classList.add("urun");
+          div.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <img src="${item.image}" alt="${item.name}">
+            <p>₺${item.price}</p>
+            <div class="adet-kontrol">
+              <button class="adet-azalt" data-cart-id="${item.cart_id}">-</button>
+              <span class="adet">${item.quantity}</span>
+              <button class="adet-artir" data-cart-id="${item.cart_id}">+</button>
+            </div>
+            <button class="sil-btn" data-id="${item.cart_id}">Sepetten Çıkar</button>
+          `;
+          sepetDiv.appendChild(div);
+        });
+      document.getElementById("toplam-fiyat").textContent = `TOPLAM FİYAT : ${topfiyat.toFixed(2)}`
+        document.querySelectorAll(".sil-btn").forEach(button => {
+          button.addEventListener("click", () => {
+            const cart_id = button.getAttribute("data-id");
+            fetch(`/cart/delete_sepet/${cart_id}`, {
+              method: "DELETE",
+            })
+              .then(res => res.json())
+              .then(res => {
+                alert(res.message || "Ürün sepetten çıkarıldı.");
+                window.location.reload();
+              });
+          });
+        });
+
+        document.querySelectorAll(".adet-artir").forEach(button => {
+          button.addEventListener("click", () => {
+            const cart_id = button.getAttribute("data-cart-id");
+            const span = button.parentElement.querySelector(".adet");
+            let current = parseInt(span.innerText);
+            current += 1;
+            span.innerText = current;
+
+            fetch("/cart/quantity_arttir", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                 cart_id:cart_id,
+                quantity: current,
+              }),
+            })
+            .then(res=>res.json())
+            .then(response =>{
+             const {topfiyat} =response
+            document.getElementById("toplam-fiyat").textContent = `TOPLAM FİYAT : ${topfiyat}`
+
+            })
+          });
+        });
+
+        document.querySelectorAll(".adet-azalt").forEach(button => {
+          button.addEventListener("click", () => {
+            const cart_id = button.getAttribute("data-cart-id");
+            const span = button.parentElement.querySelector(".adet");
+            let current = parseInt(span.innerText);
+            if (current > 1) {
+              current -= 1;
+              span.innerText = current;
+
+              fetch("/cart/quantity_azalt", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                   cart_id:cart_id,
+                   quantity: current,
+                }),
+              }).then(res=>res.json())
+              .then(response=>{
+                const {topfiyat} =response;
+                document.getElementById("toplam-fiyat").textContent = `TOPLAM FİYAT : ${topfiyat}`
+
+              })
+            }
+          });
+        });
+      })
+      .catch(err => {
+        console.error("Sepeti çekerken hata oluştu:", err);
+      });
+  });
+</script>
+
+</body>
+</html>

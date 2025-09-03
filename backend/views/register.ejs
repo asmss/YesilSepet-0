@@ -1,0 +1,52 @@
+<html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kayıt Ol</title>
+  <link rel="stylesheet" href="/css/style1.css" />
+</head>
+<body>
+  <div class="container">
+    <form id="registerForm" class="form-card">
+      <h2>Kayıt Ol</h2>
+      <input type="text" name="name" placeholder="Adınız" required />
+      <input type="email" name="email" placeholder="E-posta" required />
+      <input type="password" name="password" placeholder="Şifre" required />
+      <button type="submit">Kayıt Ol</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        password: form.password.value,
+      };
+
+      try {
+        const res = await fetch("/auth/register", {  
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          alert(result.message);
+          window.location.href = "/login";
+        } else {
+          alert(result.message || "Kayıt oluşturulamadı");
+        }
+      } catch (error) {
+        alert("Sunucu bağlantı hatası!");
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

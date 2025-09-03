@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ürün Listesi</title>
+   <link rel="stylesheet" href="/css/admin-ana.css">
+
+</head>
+<body>
+  <h1>Ürün Yönetimi</h1>
+  <div class="top-bar">
+    <button onclick="window.location.href='/admin/products/new'">Yeni Ürün Ekle</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ürün Adı</th>
+        <th>Açıklama</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach((p) => { %>
+        <tr>
+          <td><%= p.id %></td>
+          <td><%= p.name %></td>
+          <td><%= p.description %></td>
+          <td><%= p.image %></td>
+          <td><%= p.price %> ₺</td>
+          <td><%= p.stock %></td>
+          <td class="actions">
+            <button class="edit-btn" onclick="window.location.href='/admin/products/edit/<%= p.id %>'">Düzenle</button>
+            <form action="/admin/products/delete/<%= p.id %>?_method=DELETE" method="POST" onsubmit="return confirm('Bu ürünü silmek istediğinize emin misiniz?');">
+              <button class="delete-btn">Sil</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ürün Güncelle</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <h1>Ürün Güncelle</h1>
+
+  <form action="/admin/products/<%= product.id %>?_method=PUT" method="POST">
+    <label for="name">Ürün Adı:</label>
+    <input type="text" name="name" id="name" value="<%= product.name %>" required><br>
+
+    <label for="description">Açıklama:</label>
+    <textarea name="description" id="description" required><%= product.description %></textarea><br>
+
+    <label for="price">Fiyat:</label>
+    <input type="number" name="price" id="price" value="<%= product.price %>" step="0.01" required><br>
+
+    <label for="image">İmage:</label>
+    <input type="url" name="image" id="image" value="<%= product.image %>" step="0.01" required><br>
+    <label for="stock">Stok:</label>
+    <input type="number" name="stock" id="stock" value="<%= product.stock %>" required><br>
+
+    <button type="submit">Güncelle</button>
+  </form>
+
+  <a href="/admin/products">Ürün listesine geri dön</a>
+</body>
+</html>
